@@ -63,6 +63,14 @@ textarea {
     user-select: none;
   }
 
+  .text-area {
+    padding: 0px 0.3em;
+  }
+
+  .memo-datetime {
+    margin-left: 0.2em;
+  }
+
 /*================================================
     postnote 공통 css 설정
 ==================================================*/
@@ -89,14 +97,15 @@ textarea {
     transition: 0.5s;
     cursor: pointer;
 }
+/* 상단 고정하려면, 전체적인 디자인 틀어짐, 일단 보류.
 #postnote .title-wrapper.fixed {
-    /* position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 4vh;
-    width: 60%; */
-}
+    width: 60%;
+} */
 #postnote .title-wrapper>div {
     padding: 5px 0px;
 }
@@ -156,8 +165,20 @@ textarea {
     font-size: 0.8em;
 }
 
+/* 데이터 출력단 설정 */
+#postnote .content-wrapper .content-area{
+    text-align: left;
+    padding: 0px 10px;
+}
+#postnote .content-wrapper .content-area:not(:last-of-type){
+    margin-bottom: 30px;
+}
+#postnote .content-wrapper .content-area:last-child{
+    margin-bottom: 10px;
+}
+
 /* 회차구분 icon 설정 */
-#postnote .content-wrapper i {
+#postnote .content-wrapper .content-area i {
     border: 1px solid rgba(0,0,0,0.21);
     border-radius: 10px;
     min-width: 70px;
@@ -168,31 +189,25 @@ textarea {
 	border-bottom: 3px solid rgba(0,0,0,0.21);
     cursor: default;
 }
-#postnote .content-wrapper i.marking-type1 {
+#postnote .content-wrapper .content-area i.marking-type1 {
     color: white;
     background-color: red;
 }
-#postnote .content-wrapper i.marking-type2 {
+#postnote .content-wrapper .content-area i.marking-type2 {
     color: white;
     background-color: blue;
 }
-#postnote .content-wrapper i.marking-type3 {
+#postnote .content-wrapper .content-area i.marking-type3 {
     color: white;
     background-color: green;
 }
 
-/* 데이터 출력 */
-#postnote .content-wrapper .content-area{
-    text-align: left;
-    padding-bottom: 3px;
-    word-break:break-all;
-}
-#postnote .content-wrapper .content-area:not(:last-of-type){
-    border-bottom: solid 1px;
-}
-/* 북마크 내용 css 설정 */
+/* 북마크 content 설정 */
 #postnote .content-wrapper .content{
-    padding-left: 0.3em;
+    padding: 0.3em 0.5em;
+    word-break:break-all;
+    border: 1px solid;
+    border-radius: 5px;
 }
 /* content 상하 여백 조절 */
 /*#postnote .content-list>div>div:nth-child(n+2) {*/

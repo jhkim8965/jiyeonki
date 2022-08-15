@@ -22,7 +22,7 @@
         <!-- MARK/MEMO 데이터 입력 영역 -->
         <div class="submit-wrapper">
             <div name="mark">
-                <div>
+                <div class="text-area">
                     <textarea class="w100" cols="30" rows="5"></textarea>
                 </div>
                 <div class="flex submit-area">
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="hidden" name="memo">
-                <div>
+                <div class="text-area">
                     <textarea class="w100" cols="30" rows="5"></textarea>
                 </div>
                 <div class="flex submit-area">
@@ -68,7 +68,7 @@
                             <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
                         </div>
                     </div>
-                    <div class="data">
+                    <div class="content">
                         mark Content1
                     </div>
                 </div>
@@ -107,16 +107,43 @@
             </div>
             <div class="hidden" name="memo">
                 <div class="content-area">
+                    <div class="flex-sb">
+                        <div>
+                            <span class="noselect memo-datetime">2022.08.15 13:22:34</span>
+                        </div>
+                        <div class="button-area">
+                            <ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>
+                            <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
+                        </div>
+                    </div>
                     <div class="content">
                         memo Content1
                     </div>
                 </div>
                 <div class="content-area">
+                    <div class="flex-sb">
+                        <div>
+                            <span class="noselect memo-datetime">2022.08.15 13:22:34</span>
+                        </div>
+                        <div class="button-area">
+                            <ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>
+                            <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
+                        </div>
+                    </div>
                     <div class="content">
                         memo Content2
                     </div>
                 </div>
                 <div class="content-area">
+                    <div class="flex-sb">
+                        <div>
+                            <span class="noselect memo-datetime">2022.08.15 13:22:34</span>
+                        </div>
+                        <div class="button-area">
+                            <ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>
+                            <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
+                        </div>
+                    </div>
                     <div class="content">
                         memo Content3
                     </div>
