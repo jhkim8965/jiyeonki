@@ -23,11 +23,11 @@
         <div class="submit-wrapper">
             <div name="mark">
                 <div class="text-area">
-                    <textarea class="w100" cols="30" rows="5"></textarea>
+                    <textarea class="w100" cols="30" rows="5" maxlength="300" placeholder="새로운 글을 입력해 주세요." onkeyup="textArea_onkeyup(this)" spellcheck="false"></textarea>
                 </div>
                 <div class="flex submit-area">
                     <div class="info">
-                        <span>0/300</span>
+                        <span class="text-length">0/300</span>
                     </div>
                     <div class="button">
                         <button type="button" onclick="testAdd()">등록</button>
@@ -36,11 +36,11 @@
             </div>
             <div class="hidden" name="memo">
                 <div class="text-area">
-                    <textarea class="w100" cols="30" rows="5"></textarea>
+                    <textarea class="w100" cols="30" rows="5" maxlength="300" placeholder="새로운 글을 입력해 주세요." onkeyup="textArea_onkeyup(this)" spellcheck="false"></textarea>
                 </div>
                 <div class="flex submit-area">
                     <div class="info">
-                        <span>0/300</span>
+                        <span class="text-length">0/300</span>
                     </div>
                     <div class="button">
                         <button type="button" onclick="testAdd()">등록</button>
@@ -193,14 +193,19 @@
             $contents.forEach($content => $content.classList.toggle('hidden'));
         }
 
-        // 수정 버튼 클릭
+        // 수정 버튼 onclick Event
         function btnModify_onclick() {
             alert("수정!");
         }
 
-        // 삭제 버튼 클릭
+        // 삭제 버튼 onclick Event
         function btnDelete_onclick() {
             alert("삭제!");
+        }
+
+        // textArea onkeyup Event
+        function textArea_onkeyup($eventTag) {
+            $eventTag.parentElement.parentElement.querySelector('.text-length').textContent = `${$eventTag.textLength}/${$eventTag.getAttribute('maxlength')}`;
         }
 
 
