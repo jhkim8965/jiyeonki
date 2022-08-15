@@ -1,0 +1,184 @@
+/*================================================
+    태그별 css 설정
+==================================================*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+/*================================================
+    공통 css 설정
+==================================================*/
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.selected {
+    background-color: rgb(255, 202, 61);
+}
+
+.button-area {
+    text-align: right;
+    display: inline-block;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+/*================================================
+    postnote 공통 css 설정
+==================================================*/
+#postnote {
+    width: 60%;
+    min-width: 500px;
+}
+#postnote div {
+    width: 100%;
+}
+#postnote div.half {
+    width: 50%;
+}
+
+/*================================================
+    postnote->title-wrapper / 탭 버튼 영역
+==================================================*/
+#postnote .title-wrapper {
+    text-align: center;
+    border: solid 1px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+#postnote .title-wrapper>div {
+    padding: 5px 0px;
+}
+#postnote .title-wrapper>div:hover {
+    background-color: rgb(255, 232, 159);
+    font-weight: bold;
+}
+#postnote .title-wrapper .selected {
+    transition: 0.5s;
+    font-weight: bold;
+}
+
+/*================================================
+    postnote->submit-wrapper / 데이터 입력 영역
+==================================================*/
+#postnote .submit-wrapper {
+    text-align: left;
+    border: solid 1px;
+}
+#postnote .submit-wrapper .reg-area {
+    justify-content: left;
+}
+#postnote .submit-wrapper .reg-area .info {
+    width: 80%;
+    padding-left: 0.3em;
+}
+#postnote .submit-wrapper .reg-area .button {
+    width: 20%;
+    text-align: right;
+    padding-right: 0.3em;
+}
+
+/*================================================
+    postnote->accodian-wrapper / 아코디언 영역
+==================================================*/
+#postnote .accodian-wrapper {
+    text-align: center;
+    border: solid 1px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgb(255, 202, 61);
+}
+#postnote .accodian-wrapper {
+    padding: 5px 0px;
+}
+
+/*================================================
+    postnote->content-wrapper / 데이터 목록 영역
+==================================================*/
+#postnote .content-wrapper {
+    text-align: left;
+    border: solid 1px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+/* 회차구분 icon 설정 */
+#postnote .content-wrapper i {
+    border: 1px solid rgba(0,0,0,0.21);
+    border-radius: 10px;
+    min-width: 70px;
+    padding: 0.1em 0.3em 0.2em 0.3em;
+    margin-left: 0.1em;
+    display: inline-block;
+	text-decoration: none;
+	border-bottom: 3px solid rgba(0,0,0,0.21);
+    cursor: default;
+}
+#postnote .content-wrapper i.marking-type1 {
+    color: white;
+    background-color: red;
+}
+#postnote .content-wrapper i.marking-type2 {
+    color: white;
+    background-color: blue;
+}
+#postnote .content-wrapper i.marking-type3 {
+    color: white;
+    background-color: green;
+}
+
+/* 데이터 출력 */
+#postnote .content-wrapper .content-area{
+    text-align: left;
+    padding-bottom: 3px;
+    word-break:break-all;
+}
+#postnote .content-wrapper .content-area:not(:last-of-type){
+    border-bottom: solid 1px;
+}
+/* 북마크 내용 css 설정 */
+#postnote .content-wrapper .content{
+    padding-left: 0.3em;
+}
+/* content 상하 여백 조절 */
+/*#postnote .content-list>div>div:nth-child(n+2) {*/
+#postnote .content-wrapper>div>div {
+    margin-top: 0.5em;
+}
+#postnote .content-wrapper>div>div>div:nth-child(2) {
+    margin-top: 0.2em;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="test.css">
+    <!-- 아이콘 -->
+    <script defer type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script defer nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <!-- MARK/MEMO 영역 도입부 -->
+    <div id="postnote">
+        <!-- MARK/MEMO 탭 버튼 영역 -->
+        <div class="title-wrapper flex">
+            <div class="half selected" name="mark" onclick="titleClick(this)">MARK</div>
+            <div class="half" name="memo" onclick="titleClick(this)">MEMO</div>
+        </div>
+        <!-- MARK/MEMO 데이터 입력 영역 -->
+        <div class="submit-wrapper">
+            <div name="mark">
+                <div>
+                    <textarea class="w100" cols="30" rows="5"></textarea>
+                </div>
+                <div class="flex reg-area">
+                    <div class="info">
+                        <span>0/300</span>
+                    </div>
+                    <div class="button">
+                        <button type="button" onclick="testAdd()">등록</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden" name="memo">
+                <div>
+                    <textarea class="w100" cols="30" rows="5"></textarea>
+                </div>
+                <div class="flex reg-area">
+                    <div class="info">
+                        <span>0/300</span>
+                    </div>
+                    <div class="button">
+                        <button type="button" onclick="testAdd()">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MARK/MEMO 아코디언 영역 -->
+        <div class="accodian-wrapper">
+            <div class="accodian-button"><span>MARK LIST</span></div>
+            <div class="accodian-button hidden"><span>MEMO LIST</span></div>
+        </div>
+        <!-- MARK/MEMO 데이터 목록 영역 -->
+        <div class="content-wrapper">
+            <div name="mark">
+                <div class="content-area">
+                    <i class="marking-type1 noselect">ep.121</i>
+                    <div class="data">
+                        mark Content1
+                    </div>
+                </div>
+                <div class="content-area">
+                    <div class="flex-sb">
+                        <i class="marking-type2 noselect">page.23</i>
+                        <div class="button-area">
+                            <ion-icon name="create-outline" ></ion-icon>
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="content">
+                        mark Content2
+                    </div>
+                </div>
+                <div class="content-area">
+                    <i class="marking-type3 noselect">chap.5</i>
+                    <div class="content">
+                        mark Content3
+                    </div>
+                </div>
+            </div>
+            <div class="hidden" name="memo">
+                <div class="content-area">
+                    <div class="content">
+                        memo Content1
+                    </div>
+                </div>
+                <div class="content-area">
+                    <div class="content">
+                        memo Content2
+                    </div>
+                </div>
+                <div class="content-area">
+                    <div class="content">
+                        memo Content3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function titleClick($eventTag) {
+            console.log($eventTag);
+
+            const fireEvent = !$eventTag.classList.contains('selected');
+            if(fireEvent) toggleSelected($eventTag);
+        }
+        
+        // 선택처리
+        function toggleSelected($eventTag) {
+
+            // selected 클래스 toggle 처리
+            toggleSelectedClass($eventTag);
+
+            // hidden 클래스 toggle 처리
+            toggleHiddenClass($eventTag);
+        }
+
+        // selected 클래스 toggle 처리
+        function toggleSelectedClass($eventTag) {
+            const $titles = [...document.querySelector('#postnote .title-wrapper').children];
+            $titles.forEach($title => $title.classList.toggle('selected'));
+        }
+
+        // selected 클래스 toggle 처리
+        function toggleHiddenClass($eventTag) {
+            const name = $eventTag.getAttribute('name');
+
+            // 데이터 입력 영역
+            const $submits = [...document.querySelector('#postnote .submit-wrapper').children];
+            $submits.forEach($submit => $submit.classList.toggle('hidden'));
+            
+            // 아코디언 영역
+            const $accodians = [...document.querySelector('#postnote .accodian-wrapper').children];
+            $accodians.forEach($accodian => $accodian.classList.toggle('hidden'));
+            
+            // 데이터 목록 영역
+            const $contents = [...document.querySelector('#postnote .content-wrapper').children];
+            $contents.forEach($content => $content.classList.toggle('hidden'));
+        }
+
+        // 테스트용 (북마크/메모 내용 입력하기)
+        function testCall() {
+            const $contentList = document.querySelector('.content-wrapper div[name="mark"]');
+
+            const maxLoop = 10;
+            for(let iLoop = 0; iLoop < maxLoop ; iLoop++) {
+
+                let testData = {
+                    epId : iLoop%3,           // (고정)0:회차, 1:페이지, 2:권
+                    episodeNo : 121 + (iLoop*3),    // 에피소드(회차,페이지)
+                    content : `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatestContent_${iLoop}`    // 북마크/메모 내용
+                };
+
+                // 북마크/메모 내용 동적생성
+                $contentList.innerHTML += appendContent(testData);
+            }
+        }
+
+        // 북마크/메모 내용 동적생성
+        function appendContent(data) {
+            let content = '<div class="content-area">';
+
+            // (회차/페이지/권)아이콘 동적생성
+            content += appendIcon(data);
+
+            // 북마크/메모 내용 입력
+            content += appendData(data);
+
+            content += '</div>';
+
+            return content;
+        }
+
+        // (회차/페이지/권)아이콘 동적생성
+        function appendIcon(data) {
+            return '<i class="' + classifyIconType(data.epId) + `">${data.episodeNo}</i>`;
+        }
+
+        // (회차/페이지/권)아이콘 종류 판단
+        function classifyIconType(epId) {
+            // (고정)0:회차, 1:페이지, 2:권
+            switch(epId) {
+                case 0:
+                    return 'marking-type1 noselect';
+                case 1:
+                    return 'marking-type2 noselect';
+                case 2:
+                    return 'marking-type3 noselect';
+            }
+        }
+
+        // 북마크/메모 내용 입력
+        function appendData(data) {
+            return '<div class="content">'
+                + data.content
+                + '</div>'
+            ;
+        }
+
+        testCall();
+    </script>
+</body>
+</html>
