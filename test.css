@@ -9,10 +9,13 @@ body {
     width: 100vw;
     height: 100vh;
     font-size: 20px;
+    overflow-x: hidden;
 }
 
 textarea {
     resize: none;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
 }
 
 /*================================================
@@ -44,6 +47,11 @@ textarea {
 .button-area {
     text-align: right;
     display: inline-block;
+    margin-right: 0.3em;
+}
+
+.button {
+    cursor: pointer;
 }
 
 .noselect {
@@ -61,6 +69,9 @@ textarea {
 #postnote {
     width: 60%;
     min-width: 500px;
+    border: 1px solid;
+    padding: 0.5em;
+    border-radius: 5px;
 }
 #postnote div {
     width: 100%;
@@ -77,6 +88,14 @@ textarea {
     border: solid 1px;
     transition: 0.5s;
     cursor: pointer;
+}
+#postnote .title-wrapper.fixed {
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4vh;
+    width: 60%; */
 }
 #postnote .title-wrapper>div {
     padding: 5px 0px;
@@ -97,14 +116,15 @@ textarea {
     text-align: left;
     border: solid 1px;
 }
-#postnote .submit-wrapper .reg-area {
+#postnote .submit-wrapper .submit-area {
     justify-content: left;
+    margin-bottom: 0.2em;
 }
-#postnote .submit-wrapper .reg-area .info {
+#postnote .submit-wrapper .submit-area .info {
     width: 80%;
     padding-left: 0.3em;
 }
-#postnote .submit-wrapper .reg-area .button {
+#postnote .submit-wrapper .submit-area .button {
     width: 20%;
     text-align: right;
     padding-right: 0.3em;

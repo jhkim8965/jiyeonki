@@ -15,9 +15,9 @@
     <!-- MARK/MEMO 영역 도입부 -->
     <div id="postnote">
         <!-- MARK/MEMO 탭 버튼 영역 -->
-        <div class="title-wrapper flex">
-            <div class="half selected" name="mark" onclick="titleClick(this)">MARK</div>
-            <div class="half" name="memo" onclick="titleClick(this)">MEMO</div>
+        <div class="title-wrapper flex fixed">
+            <div class="half selected" name="mark" onclick="btnTitle_onclick(this)">MARK</div>
+            <div class="half" name="memo" onclick="btnTitle_onclick(this)">MEMO</div>
         </div>
         <!-- MARK/MEMO 데이터 입력 영역 -->
         <div class="submit-wrapper">
@@ -25,7 +25,7 @@
                 <div>
                     <textarea class="w100" cols="30" rows="5"></textarea>
                 </div>
-                <div class="flex reg-area">
+                <div class="flex submit-area">
                     <div class="info">
                         <span>0/300</span>
                     </div>
@@ -38,7 +38,7 @@
                 <div>
                     <textarea class="w100" cols="30" rows="5"></textarea>
                 </div>
-                <div class="flex reg-area">
+                <div class="flex submit-area">
                     <div class="info">
                         <span>0/300</span>
                     </div>
@@ -57,17 +57,31 @@
         <div class="content-wrapper">
             <div name="mark">
                 <div class="content-area">
-                    <i class="marking-type1 noselect">ep.121</i>
+                    <div class="flex-sb">
+                        <div>
+                            <i class="marking-type1 noselect">ep.121</i>
+                            |
+                            <span class="noselect">2022.08.15 13:22:34</span>
+                        </div>
+                        <div class="button-area">
+                            <ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>
+                            <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
+                        </div>
+                    </div>
                     <div class="data">
                         mark Content1
                     </div>
                 </div>
                 <div class="content-area">
                     <div class="flex-sb">
-                        <i class="marking-type2 noselect">page.23</i>
+                        <div>
+                            <i class="marking-type2 noselect">page.23</i>
+                            |
+                            <span class="noselect">2022.08.15 13:22:34</span>
+                        </div>
                         <div class="button-area">
-                            <ion-icon name="create-outline" ></ion-icon>
-                            <ion-icon name="trash-outline"></ion-icon>
+                            <ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>
+                            <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
                         </div>
                     </div>
                     <div class="content">
@@ -75,7 +89,17 @@
                     </div>
                 </div>
                 <div class="content-area">
-                    <i class="marking-type3 noselect">chap.5</i>
+                    <div class="flex-sb">
+                        <div>
+                            <i class="marking-type3 noselect">chap.5</i>
+                            |
+                            <span class="noselect">2022.08.15 13:22:34</span>
+                        </div>
+                        <div class="button-area">
+                            <ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>
+                            <ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>
+                        </div>
+                    </div>
                     <div class="content">
                         mark Content3
                     </div>
@@ -101,7 +125,8 @@
         </div>
     </div>
     <script>
-        function titleClick($eventTag) {
+        // 탭 버튼 클릭
+        function btnTitle_onclick($eventTag) {
             console.log($eventTag);
 
             const fireEvent = !$eventTag.classList.contains('selected');
@@ -141,6 +166,27 @@
             $contents.forEach($content => $content.classList.toggle('hidden'));
         }
 
+        // 수정 버튼 클릭
+        function btnModify_onclick() {
+            alert("수정!");
+        }
+
+        // 삭제 버튼 클릭
+        function btnDelete_onclick() {
+            alert("삭제!");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         // 테스트용 (북마크/메모 내용 입력하기)
         function testCall() {
             const $contentList = document.querySelector('.content-wrapper div[name="mark"]');
@@ -149,34 +195,46 @@
             for(let iLoop = 0; iLoop < maxLoop ; iLoop++) {
 
                 let testData = {
-                    epId : iLoop%3,           // (고정)0:회차, 1:페이지, 2:권
-                    episodeNo : 121 + (iLoop*3),    // 에피소드(회차,페이지)
-                    content : `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatestContent_${iLoop}`    // 북마크/메모 내용
+                    epId : iLoop%3           // (고정)0:회차, 1:페이지, 2:권
+                    , episodeNo : 121 + (iLoop*3)    // 에피소드(회차,페이지)
+                    , content : `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatestContent_${iLoop}`    // 북마크/메모 내용
+                    , regDate : '2022.08.15 19:48:25'
                 };
 
                 // 북마크/메모 내용 동적생성
-                $contentList.innerHTML += appendContent(testData);
+                $contentList.innerHTML += appendContentArea(testData);
             }
         }
 
         // 북마크/메모 내용 동적생성
-        function appendContent(data) {
+        function appendContentArea(data) {
             let content = '<div class="content-area">';
 
             // (회차/페이지/권)아이콘 동적생성
             content += appendIcon(data);
 
             // 북마크/메모 내용 입력
-            content += appendData(data);
+            content += appendContent(data);
 
             content += '</div>';
-
             return content;
         }
 
         // (회차/페이지/권)아이콘 동적생성
         function appendIcon(data) {
-            return '<i class="' + classifyIconType(data.epId) + `">${data.episodeNo}</i>`;
+            let iconArea = '';
+            iconArea += '<div class="flex-sb">';
+            iconArea +=     '<div>';
+            iconArea +=         '<i class="' + classifyIconType(data.epId) + `">${data.episodeNo}</i>`;
+            iconArea +=         ' | ';
+            iconArea +=         `<span class="noselect">${data.regDate}</span>`;
+            iconArea +=     '</div>';
+            iconArea +=     '<div class="button-area">';
+            iconArea +=         '<ion-icon name="create-outline" class="button" onclick="btnModify_onclick(this)"></ion-icon>';
+            iconArea +=         '<ion-icon name="trash-outline" class="button" onclick="btnDelete_onclick(this)"></ion-icon>';
+            iconArea +=     '</div>';
+            iconArea += '</div>';
+            return iconArea;
         }
 
         // (회차/페이지/권)아이콘 종류 판단
@@ -193,7 +251,7 @@
         }
 
         // 북마크/메모 내용 입력
-        function appendData(data) {
+        function appendContent(data) {
             return '<div class="content">'
                 + data.content
                 + '</div>'
