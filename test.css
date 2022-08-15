@@ -189,6 +189,15 @@ textarea {
 	border-bottom: 3px solid rgba(0,0,0,0.21);
     cursor: default;
 }
+#postnote .content-wrapper .content-area i.marking-type1::before {
+    content: 'ep.';
+}
+#postnote .content-wrapper .content-area i.marking-type2::before {
+    content: 'page.';
+}
+#postnote .content-wrapper .content-area i.marking-type3::before {
+    content: 'chap.';
+}
 #postnote .content-wrapper .content-area i.marking-type1 {
     color: white;
     background-color: red;
