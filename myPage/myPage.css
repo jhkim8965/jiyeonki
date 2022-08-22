@@ -1,0 +1,206 @@
+/*================================================
+    태그별 css 설정
+==================================================*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-size: 20px;
+    overflow-x: hidden;
+}
+
+textarea {
+    resize: none;
+    cursor: default;
+}
+
+hr {
+    width: 99%;
+    margin: 0.2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #000;
+}
+table td {
+    padding: 0.2em;
+    vertical-align: middle;
+}
+table td:nth-child(odd) {
+    width: 10%;
+    min-width: 100px;
+}
+table td:nth-child(odd)::before {
+    content: '· ';
+    padding-left: 0.2em;
+}
+table td input{
+    height: 25px;
+    width: 80%;
+    min-width: 100px;
+}
+
+/*================================================
+    공통 css 설정
+==================================================*/
+.hidden {
+    display: none;
+}
+
+.selected {
+    background-color: rgb(255, 202, 61);
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.w10 {width: 10%;}
+.w50 {width: 50%;}
+.w90 {width: 90%;}
+.w100 {width: 100%;}
+
+.h100 {height: 100%;}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-fs {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/*================================================
+    whole-wrapper       / 최상단 wrapper 영역
+==================================================*/
+.whole-wrapper {
+    width: 60%;
+    min-width: 500px;
+    border: 1px solid;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+/*================================================
+    header-wrapper      / header 영역
+==================================================*/
+
+/*================================================
+    tab-button-wrapper  / 탭 버튼 영역
+==================================================*/
+.whole-wrapper .header-wrapper .tab-button-wrapper {
+    text-align: center;
+    border: solid 1px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.whole-wrapper .header-wrapper .tab-button-wrapper > div {
+    padding: 5px 0px;
+}
+.whole-wrapper .header-wrapper .tab-button-wrapper > div:hover {
+    background-color: rgb(255, 232, 159);
+    font-weight: bold;
+}
+.whole-wrapper .header-wrapper .tab-button-wrapper .selected {
+    transition: 0.5s;
+    font-weight: bold;
+}
+
+/*================================================
+    search-wrapper      / 검색 영역
+==================================================*/
+.whole-wrapper .header-wrapper .search-wrapper {
+    border: solid 1px;
+    padding: 0.2em;
+}
+
+/*================================================
+    list-wrapper        / LIST 영역
+==================================================*/
+.whole-wrapper .header-wrapper .list-wrapper {
+    text-align: center;
+    border: solid 1px;
+    margin-top: 10px;
+    cursor: default;
+    font-weight: bold;
+    background-color: rgb(255, 202, 61);
+}
+.whole-wrapper .header-wrapper .list-wrapper {
+    padding: 5px 0px;
+}
+
+/*================================================
+    body-wrapper        / body 영역
+==================================================*/
+.whole-wrapper .body-wrapper {
+    height: 70vh;
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 0.5em;
+}
+
+/*================================================
+    content-wrapper     / content 영역
+==================================================*/
+.whole-wrapper .body-wrapper .content-wrapper{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0.2em;
+}
+.whole-wrapper .body-wrapper .content-wrapper:nth-child(n*2){
+    margin-top: 2em;
+}
+
+/* meta data 영역 */
+.whole-wrapper .body-wrapper .content-wrapper .meta-data{
+    margin-bottom: 0.3em;
+}
+
+/* 책 이미지 영역 */
+.whole-wrapper .body-wrapper .content-wrapper .content div.book-image {
+    text-align: center;
+    min-width: 80px;
+}
+.whole-wrapper .body-wrapper .content-wrapper .content img.book-image {
+    object-fit: cover;
+    width: 70px;
+}
+
+/* 책 부가정보 영역 */
+.whole-wrapper .body-wrapper .content-wrapper .content .book-info {
+    padding-right: 0.5em;
+}
+
+/* 책 제목 영역 */
+.whole-wrapper .body-wrapper .content-wrapper .content .book-info .book-title {
+    margin-bottom: 0.3em;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid;
+}
+
+/* MARK or MEMO 내용 영역 */
+.whole-wrapper .body-wrapper .content-wrapper .content .book-info .my-text textarea {
+    border: none;
+}

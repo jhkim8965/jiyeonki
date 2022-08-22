@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="myPage.css">
+    <!-- 아이콘 -->
+    <script defer type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script defer nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <!-- 최상단 Wrapper 영역 -->
+    <div class="whole-wrapper">
+        <!-- header 영역 -->
+        <div class="header-wrapper">
+            <!-- 탭 버튼 영역 -->
+            <div class="tab-button-wrapper flex">
+                <div class="w50 selected" name="mark">MARK</div>
+                <div class="w50" name="memo">MEMO</div>
+            </div>
+            <!-- 검색 영역 -->
+            <div class="search-wrapper">
+                <div name="mark">
+                    <table>
+                        <tr>
+                            <td>책 제목</td>
+                            <td><input type="text"></td>
+                            <td>작성일</td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="hidden" name="memo">
+                    메모 검색 영역
+                </div>
+            </div>
+            <!-- LIST 영역 -->
+            <div class="list-wrapper">
+                <div class="list-button"><span>MARK LIST</span></div>
+                <div class="list-button hidden"><span>MEMO LIST</span></div>
+            </div>
+        </div>
+        <!-- body 영역 -->
+        <div class="body-wrapper">
+            <!-- content 영역 -->
+            <div class="content-wrapper" name="mark">
+                <!-- META 정보 -->
+                <div class="meta-data">
+                    2022.08.22
+                </div>
+                <div class="content flex-fs">
+                    <!-- 책 이미지 -->
+                    <div class="book-image w10">
+                        <img class="book-image" src="./project3.png" alt="book image">
+                    </div>
+                    <div class="book-info w90">
+                        <!-- 책 제목 -->
+                        <div class="book-title">
+                            책 제목
+                        </div>
+                        <!-- MARK 내용 -->
+                        <div class="my-text">
+                            <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">aerga&#10;&#10;&#10;&#10;&#10;egarfagreerg</textarea>
+                            <hr>
+                            <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">aerga&#10;&#10;&#10;&#10;&#10;egarfagreerg</textarea>
+                        </div>
+                        <div class="view-more">
+                            <a class="noselect" href="javascript:click_viewMore(this)">... 더보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrapper hidden" name="memo">
+                메모 내용 영역
+            </div>
+        </div>
+    </div>
+    <script>
+        /*======================================================================
+            이벤트 영역
+        ========================================================================*/
+        // textarea 높이 자동조절
+        function resize_textarea($eventTag) {
+            $eventTag.style.height = "1px";
+            $eventTag.style.height = (12 + $eventTag.scrollHeight) + "px";
+        }
+
+        // ... 더보기 클릭
+        function click_viewMore($eventTag) {
+            alert('... 더보기 클릭!!');
+        }
+
+        /*======================================================================
+            함수 영역
+        ========================================================================*/
+
+        /*======================================================================
+            테스트 영역
+        ========================================================================*/
+        function testCall() {
+            const $textAreaList = [...document.querySelectorAll('.my-text textarea')];
+
+            for($textArea of $textAreaList) {
+                $textArea.style.height = "1px";
+                $textArea.style.height = (12 + $textArea.scrollHeight) + "px";
+            }
+        }
+
+        testCall();
+    </script>
+</body>
+</html>
