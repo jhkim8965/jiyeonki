@@ -15,26 +15,33 @@
     <!-- 최상단 Wrapper 영역 -->
     <div class="whole-wrapper">
         <!-- header 영역 -->
-        <div class="header-wrapper">
+        <div class="header-wrapper noselect">
             <!-- 탭 버튼 영역 -->
             <div class="tab-button-wrapper flex">
-                <div class="w50 selected" name="mark">MARK</div>
-                <div class="w50" name="memo">MEMO</div>
+                <div class="w50 selected" name="mark" onclick="oncick_tabButton(this)">MARK</div>
+                <div class="w50" name="memo" onclick="oncick_tabButton(this)">MEMO</div>
             </div>
             <!-- 검색 영역 -->
             <div class="search-wrapper">
                 <div name="mark">
                     <table>
                         <tr>
-                            <td>책 제목</td>
+                            <td>MARK 책 제목</td>
                             <td><input type="text"></td>
-                            <td>작성일</td>
+                            <td>MARK 작성일</td>
                             <td><input type="text"></td>
                         </tr>
                     </table>
                 </div>
                 <div class="hidden" name="memo">
-                    메모 검색 영역
+                    <table>
+                        <tr>
+                            <td>MEMO 책 제목</td>
+                            <td><input type="text"></td>
+                            <td>MEMO 작성일</td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <!-- LIST 영역 -->
@@ -47,28 +54,84 @@
         <div class="body-wrapper">
             <!-- content 영역 -->
             <div class="content-wrapper" name="mark">
-                <!-- META 정보 -->
-                <div class="meta-data">
-                    2022.08.22
-                </div>
-                <div class="content flex-fs">
-                    <!-- 책 이미지 -->
-                    <div class="book-image w10">
-                        <img class="book-image" src="./project3.png" alt="book image">
+                <div class="content">
+                    <!-- META 정보 -->
+                    <div class="meta-data noselect">
+                        2022.08.22
                     </div>
-                    <div class="book-info w90">
-                        <!-- 책 제목 -->
-                        <div class="book-title">
-                            책 제목
+                    <div class="book-wrapper flex-fs">
+                        <!-- 책 이미지 -->
+                        <div class="book-image w20 noselect">
+                            <img class="book-image" src="./project3.png" alt="book image">
                         </div>
-                        <!-- MARK 내용 -->
-                        <div class="my-text">
-                            <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">aerga&#10;&#10;&#10;&#10;&#10;egarfagreerg</textarea>
-                            <hr>
-                            <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">aerga&#10;&#10;&#10;&#10;&#10;egarfagreerg</textarea>
+                        <div class="book-info w80">
+                            <!-- 책 제목 -->
+                            <div class="book-title">
+                                여행계획 짜기
+                            </div>
+                            <!-- MARK 내용 -->
+                            <div class="my-text">
+                                <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">asdasdagre</textarea>
+                                <hr>
+                                <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">argerg&#10;rgaergarg&#10;raeggg&#10;rgarg&#10;&#10;raeheath</textarea>
+                            </div>
+                            <div class="view-more">
+                                <a class="noselect" href="javascript:click_viewMore(this)">... 더보기</a>
+                            </div>
                         </div>
-                        <div class="view-more">
-                            <a class="noselect" href="javascript:click_viewMore(this)">... 더보기</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- META 정보 -->
+                    <div class="meta-data noselect">
+                        2022.05.12
+                    </div>
+                    <div class="book-wrapper flex-fs">
+                        <!-- 책 이미지 -->
+                        <div class="book-image w20 noselect">
+                            <img class="book-image" src="./project3.png" alt="book image">
+                        </div>
+                        <div class="book-info w80">
+                            <!-- 책 제목 -->
+                            <div class="book-title">
+                                여행을 떠나자!
+                            </div>
+                            <!-- MARK 내용 -->
+                            <div class="my-text">
+                                <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">dddddddd&#10;&#10;ada&#10;&#10;afefef</textarea>
+                                <hr>
+                                <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">a&#10;b&#10;c&#10;d&#10;e&#10;f</textarea>
+                            </div>
+                            <div class="view-more">
+                                <a class="noselect" href="javascript:click_viewMore(this)">... 더보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- META 정보 -->
+                    <div class="meta-data noselect">
+                        2021.08.20
+                    </div>
+                    <div class="book-wrapper flex-fs">
+                        <!-- 책 이미지 -->
+                        <div class="book-image w20 noselect">
+                            <img class="book-image" src="./project3.png" alt="book image">
+                        </div>
+                        <div class="book-info w80">
+                            <!-- 책 제목 -->
+                            <div class="book-title">
+                                여행 가고싶어
+                            </div>
+                            <!-- MARK 내용 -->
+                            <div class="my-text">
+                                <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">aerga&#10;&#10;&#10;&#10;&#10;egarfagreerg</textarea>
+                                <hr>
+                                <textarea class="w100" spellcheck="false" readonly onkeydown="resize_textarea(this)" onkeyup="resize_textarea(this)">aerga&#10;&#10;&#10;&#10;&#10;egarfagreerg</textarea>
+                            </div>
+                            <div class="view-more">
+                                <a class="noselect" href="javascript:click_viewMore(this)">... 더보기</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,6 +145,12 @@
         /*======================================================================
             이벤트 영역
         ========================================================================*/
+        // 탭 버튼 클릭
+        function oncick_tabButton($eventTag) {
+            const fireEvent = !$eventTag.classList.contains('selected');
+            if(fireEvent) toggleSelected($eventTag);
+        }
+
         // textarea 높이 자동조절
         function resize_textarea($eventTag) {
             $eventTag.style.height = "1px";
@@ -96,6 +165,38 @@
         /*======================================================================
             함수 영역
         ========================================================================*/
+        // MARK or MEMO 선택처리
+        function toggleSelected($eventTag) {
+
+            // selected 클래스 toggle 처리
+            toggleSelectedClass($eventTag);
+
+            // hidden 클래스 toggle 처리
+            toggleHiddenClass($eventTag);
+        }
+
+        // selected 클래스 toggle 처리
+        function toggleSelectedClass($eventTag) {
+            const $titles = [...document.querySelector('.whole-wrapper .tab-button-wrapper').children];
+            $titles.forEach($title => $title.classList.toggle('selected'));
+        }
+
+        // selected 클래스 toggle 처리
+        function toggleHiddenClass($eventTag) {
+            const name = $eventTag.getAttribute('name');
+
+            // 검색 영역
+            const $searchList = [...document.querySelector('.whole-wrapper .search-wrapper').children];
+            $searchList.forEach($search => $search.classList.toggle('hidden'));
+            
+            // LIST 영역
+            const $lists = [...document.querySelector('.whole-wrapper .list-wrapper').children];
+            $lists.forEach($list => $list.classList.toggle('hidden'));
+            
+            // 데이터 목록 영역
+            const $contents = [...document.querySelector('.whole-wrapper .body-wrapper').children];
+            $contents.forEach($content => $content.classList.toggle('hidden'));
+        }
 
         /*======================================================================
             테스트 영역
