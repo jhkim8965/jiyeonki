@@ -7,11 +7,6 @@
     margin: 0;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
 body {
     width: 100vw;
     height: 100vh;
@@ -30,31 +25,6 @@ textarea {
 hr {
     width: 99%;
     margin: 1em 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 5px;
-    border-style: hidden;
-    box-shadow: 0 0 0 1px #000;
-}
-table td {
-    padding: 0.2em;
-    vertical-align: middle;
-}
-table td:nth-child(odd) {
-    width: 20%;
-    min-width: 100px;
-}
-table td:nth-child(odd)::before {
-    content: '· ';
-    padding-left: 0.2em;
-}
-table td input{
-    height: 25px;
-    width: 80%;
-    min-width: 100px;
 }
 
 /*================================================
@@ -77,9 +47,9 @@ table td input{
     user-select: none;
 }
 
-.w20 {width: 20%;}
+.w30 {width: 30%;}
 .w50 {width: 50%;}
-.w80 {width: 80%;}
+.w70 {width: 70%;}
 .w100 {width: 100%;}
 
 .flex {
@@ -91,6 +61,11 @@ table td input{
     display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /*================================================
@@ -111,31 +86,10 @@ table td input{
 /*================================================
     tab-button-wrapper  / 탭 버튼 영역
 ==================================================*/
-.tab-button-wrapper {
-    text-align: center;
-    border: solid 1px;
-    transition: 0.5s;
-    cursor: pointer;
-}
-.tab-button-wrapper > div {
-    padding: 5px 0px;
-}
-.tab-button-wrapper > div:hover {
-    background-color: rgb(255, 232, 159);
-    font-weight: bold;
-}
-.tab-button-wrapper .selected {
-    transition: 0.5s;
-    font-weight: bold;
-}
 
 /*================================================
     search-wrapper      / 검색 영역
 ==================================================*/
-.search-wrapper {
-    border: solid 1px;
-    padding: 0.2em;
-}
 
 /*================================================
     list-wrapper        / LIST 영역
@@ -151,10 +105,47 @@ table td input{
 }
 
 /*================================================
+    book-wrapper        / BOOK 영역
+==================================================*/
+.book-wrapper {
+    text-align: center;
+    border: solid 1px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: default;
+    padding: 0.8em 0;
+}
+
+/* 책 이미지 영역 */
+.book-wrapper .book-image div {
+    text-align: center;
+    min-height: 210px;
+    padding-right: 0.5em;
+}
+.book-wrapper .book-image img {
+    object-fit: cover;
+    height: 250px;
+}
+
+/* 책 정보 영역 */
+.book-wrapper .book-info {
+    padding-right: 3em;
+}
+.book-wrapper .book-info .book-title {
+    margin-bottom: 0.3em;
+    padding-bottom: 0.2em;
+    border-bottom: 3px double;
+    font-weight: bold;
+}
+.book-wrapper .book-info li {
+    margin: 0.5em 0;
+}
+
+/*================================================
     body-wrapper        / body 영역
 ==================================================*/
 .body-wrapper {
-    height: 84vh;
+    height: 60vh;
     border: 1px solid;
     border-radius: 5px;
     margin-top: 10px;
@@ -168,51 +159,22 @@ table td input{
 ==================================================*/
 /* content 영역 */
 .body-wrapper .content{
-    border: 1px solid;
-    border-radius: 5px;
     padding: 0.2em;
 }
 .body-wrapper .content:nth-child(n+2){
     margin-top: 0.5em;
 }
 
-/* meta data 영역 */
-.content-wrapper .meta-data{
-    padding-left: 0.2em;
-    margin-bottom: 1em;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-/* 책 이미지 영역 */
-.book-wrapper div.book-image {
-    text-align: center;
-    min-height: 200px;
-    padding-right: 0.5em;
-}
-.book-wrapper img.book-image {
-    object-fit: cover;
-    height: 190px;
-}
-
-/* 책 부가정보 영역 */
-.book-wrapper .book-info {
-    padding-right: 0.5em;
-}
-
-/* 책 제목 영역 */
-.book-wrapper .book-info .book-title {
-    margin-bottom: 0.3em;
-    padding-bottom: 0.2em;
-    border-bottom: 3px double;
-    font-weight: bold;
-}
-
 /* MARK or MEMO 내용 영역 */
-.book-wrapper .book-info .my-text textarea {
+.content-wrapper .content textarea {
     border: none;
     outline-color: #4a4a4a4f;
 }
-.book-wrapper .book-info .my-text textarea:first-child {
+.content-wrapper .content textarea:first-child {
     margin-top: 0.5em;
+}
+/* meta data 영역 */
+.meta-wrapper .meta-data{
+    padding-left: 0.2em;
+    margin-bottom: 1em;
 }
